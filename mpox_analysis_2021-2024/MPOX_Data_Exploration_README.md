@@ -8,8 +8,8 @@ This project explores two datasets: one related to global Mpox cases and another
 ### 1. data_tbl
 - **location**: Country or region
 - **date**: Date of the reported cases
-- **cases_day**: Daily new cases
-- **deaths_day**: Daily new deaths
+- **cases_daily**: Daily new cases
+- **deaths_daily**: Daily new deaths
 - **cases_perweek**: 7-day moving average of new cases
 - **deaths_perweek**: 7-day moving average of new deaths
 - **total_cases**: Cumulative total cases
@@ -25,16 +25,16 @@ This project explores two datasets: one related to global Mpox cases and another
 -- Check for missing values in the cases table
 SELECT * 
 FROM data_tbl 
-WHERE (cases_day IS NULL OR cases_week IS NULL)
-   OR (deaths_day IS NULL OR deaths_week IS NULL)
+WHERE (cases_daily IS NULL OR cases_weekly IS NULL)
+   OR (deaths_daily IS NULL OR deaths_weekly IS NULL)
    OR (total_cases IS NULL OR total_deaths IS NULL);
 
 
 -- Check for negative or suspicious values in cases or deaths
 SELECT * 
 FROM data_tbl 
-WHERE (cases_day < 0 OR cases_week < 0)
-   OR (deaths_day < 0 OR deaths_week < 0)
+WHERE (cases_daily < 0 OR cases_weekly < 0)
+   OR (deaths_daily < 0 OR deaths_weekly < 0)
    OR (total_cases < 0 OR total_deaths < 0);
 
 ```
@@ -50,20 +50,20 @@ FROM data_tbl
 WHERE date = '2024-09-04' and location = 'World';
 
 -- Average daily cases
-SELECT AVG(cases_day) AS avg_daily_cases, AVG(deaths_day) AS avg_daily_deaths
+SELECT AVG(cases_daily) AS avg_daily_cases, AVG(deaths_dai) AS avg_daily_deaths
 FROM data_tbl;
 
 -- Average weekly cases
-SELECT AVG(cases_week*7) AS avg_weekly_cases, AVG(deaths_week*7) AS avg_weekly_deaths
+SELECT AVG(cases_weekly*7) AS avg_weekly_cases, AVG(deaths_week*7) AS avg_weekly_deaths
 FROM data_tbl;
 
 -- Maximum daily cases and deaths
-SELECT MAX(cases_day) AS max_cases_day,
-MAX(deaths_day) AS max_deaths _day
+SELECT MAX(cases_daily) AS max_cases_daily,
+MAX(deaths_dai) AS max_deaths _day
 FROM data_tbl;
 
 -- Maximum weekly cases and deaths
-SELECT MAX(cases_week*7) AS max_cases_week,
+SELECT MAX(cases_weekly*7) AS max_cases_weekly,
 MAX(deaths_week*7) AS max_deaths_week
 FROM data_tbl;
 ```
@@ -73,13 +73,13 @@ FROM data_tbl;
 - Compare weekly cases and deaths to raw data to identify trends
 ```sql
 -- Monthly total cases and deaths
-SELECT DATE_FORMAT(date, '%Y-%m') AS month, SUM(cases_day) AS monthly_cases, SUM(deaths_day) AS monthly_deaths
+SELECT DATE_FORMAT(date, '%Y-%m') AS month, SUM(cases_daily) AS monthly_cases, SUM(deaths_dai) AS monthly_deaths
 FROM data_tbl
 GROUP BY month
 ORDER BY month;
 
 -- Smoothed cases vs actual new cases over time
-SELECT date, cases_day, cases_week FROM data_tbl ORDER BY date;
+SELECT date, cases_daily, cases_weekly FROM data_tbl ORDER BY date;
 ```
 
 ### 4. Case Fatality Rate (CFR)
@@ -89,7 +89,7 @@ SELECT date, cases_day, cases_week FROM data_tbl ORDER BY date;
 -- Case Fatality Rate (CFR)
 SELECT 
     location, 
-    (SUM(deaths_day) / SUM(cases_day)) * 100 AS case_fatality_rate
+    (SUM(deaths_daily) / SUM(cases_daily)) * 100 AS case_fatality_rate
 FROM data_tbl
 WHERE location = 'World'
 GROUP BY location;
