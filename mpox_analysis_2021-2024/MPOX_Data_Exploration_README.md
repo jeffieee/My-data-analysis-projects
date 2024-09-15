@@ -91,6 +91,7 @@ SELECT
     location, 
     (SUM(deaths_day) / SUM(cases_day)) * 100 AS case_fatality_rate
 FROM data_tbl
+WHERE location = 'World'
 GROUP BY location;
     
 ```
