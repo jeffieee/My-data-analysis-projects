@@ -9,17 +9,18 @@ The dataset contains the following columns:
 - **Name**: The name of the patient.
 - **Age**: The age of the patient.
 - **Gender**: The age of the patient.
-- **Blood type**: The age of the patient.
-- **Medical Condition**: The age of the patient.
-- **Hospital**: The age of the patient.
-- **Insurance Provider**: The age of the patient.
-- **Billing amount**: The age of the patient.
-- **Admission type**: The age of the patient.
-- **Room Number**: The room number assigned to the patient.
-- **Date of Admission**: The date when the patient was admitted to the hospital.
-- **Discharge Date**: The date when the patient was discharged from the hospital.
-- **Medication**: The a.
-- **Test Results**: The age of the patient.
+- **Blood type**: The patient's blood type, which can be one of the common blood types (e.g., "A+", "O-", etc.).
+- **Medical Condition**: This column specifies the primary medical condition or diagnosis associated with the patient, such as "Diabetes," "Hypertension," "Asthma," and more.
+- **Hospital**: Identifies the healthcare facility or hospital where the patient was admitted.
+- **Doctor**: The name of the doctor responsible for the patient's care during their admission.
+- **Insurance Provider**: This column indicates the patient's insurance provider, which can be one of several options, including "Aetna," "Blue Cross," "Cigna," "UnitedHealthcare," and "Medicare."
+- **Billing amount**: The amount of money billed for the patient's healthcare services during their admission. This is expressed as a floating-point number.
+- **Admission type**: Specifies the type of admission, which can be "Emergency," "Elective," or "Urgent," reflecting the circumstances of the admission.
+- **Room Number**: The room number where the patient was accommodated during their admission.
+- **Date of Admission**: The date on which the patient was admitted to the healthcare facility.
+- **Discharge Date**: The date on which the patient was discharged from the healthcare facility, based on the admission date and a random number of days within a realistic range.
+- **Medication**: Identifies a medication prescribed or administered to the patient during their admission. Examples include "Aspirin," "Ibuprofen," "Penicillin," "Paracetamol," and "Lipitor."
+- **Test Results**: Describes the results of a medical test conducted during the patient's admission. Possible values include "Normal," "Abnormal," or "Inconclusive," indicating the outcome of the test.
 
 ## Data Cleaning Steps
 
@@ -191,6 +192,18 @@ Show how many patients are taking specific medications:
    FROM healthcaretbl
    GROUP BY medication;
 ```
+
+### 14. Test Results
+Analyze the distribution of test results among patients:
+```sql
+   SELECT 
+      results, 
+      COUNT(*) as total_patients
+   FROM healthcaretbl
+   GROUP BY results
+   ORDER BY total_patients DESC;
+
+
 
 ## Conclusion
 This project cleaned and explored the healthcare dataset by addressing common data issues like negative values, duplicates, and inconsistent data. The cleaned dataset is now ready for further analysis or machine learning tasks.
