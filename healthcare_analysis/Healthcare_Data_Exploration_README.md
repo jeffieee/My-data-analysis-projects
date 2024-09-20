@@ -2,7 +2,9 @@
 # Healthcare Data Cleaning and Exploration Project
 
 ## Project Overview
-This project focuses on cleaning and preprocessing a healthcare dataset using Python and pandas library. The dataset contains records related to patient information, including age, room number, admission, and discharge dates. The goal is to remove errors, inconsistencies, and duplicates from the dataset, and explore the data to uncover insights.
+This project focuses on cleaning and preprocessing a healthcare dataset using Python and the pandas library. The dataset contains records related to patient information, including age, room number, admission, and discharge dates. The goal is to remove errors, inconsistencies, and duplicates from the dataset. Additionally, SQL was utilized for in-depth data exploration, allowing for advanced querying and uncovering valuable insights into patient demographics, medical conditions, and healthcare services. Finally, an insightful dashboard was created to visualize key metrics and trends in healthcare data, providing a comprehensive overview of patient admissions, room utilization, test results, and more.
+
+This enhanced overview highlights the combination of Python, SQL, and dashboard creation for data analysis.
 
 ## Dataset Information
 The dataset contains the following columns:
