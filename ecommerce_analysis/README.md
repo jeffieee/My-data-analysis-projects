@@ -1,5 +1,5 @@
 
-# E-commerce Dataset Analysis - Exploratory Data Analysis (EDA)
+# E-Commerce Insights: An Exploratory Data Analysis on Purchasing Trends		
 
 ## Project Overview
 This notebook performs an exploratory data analysis (EDA) on an e-commerce dataset. The main goal is to uncover insights into customer behavior, product sales, and key performance metrics, using various visualizations and statistical techniques.
